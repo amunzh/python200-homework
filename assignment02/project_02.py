@@ -24,7 +24,7 @@ plt.show()
 new_std = students[students['G3']!=0]
 print(f'Old Shape: {students.shape};  New Shape: {new_std.shape}')
 # If we kept the rows with 0's in G3, the whole model would be skewed and give us underestimated results.
-new_std['sex'] = new_std['sex'].replace({'M':0,'F':1})
+new_std['sex'] = new_std['sex'].replace({'M':1,'F':0})
 y_n_col = ['schoolsup','internet','higher','activities']
 new_std[y_n_col] = new_std[y_n_col].replace({'yes':1,'no':0})
 print(f'Pearson corr. original: {students["G3"].corr(students["absences"])}\nNew corr.: {new_std["G3"].corr(new_std["absences"])}')
@@ -88,7 +88,7 @@ for name, coef in zip(feature_cols, model_new.coef_):
     print(f"{name:12s}: {coef:+.3f}")
 # The suprizing coef are school support and sex. The coef for dchool support indicated that students who's reciving extra help from school would have lower grade bu around 2 points
 # This cold be because students who recive extra help had worst grades before reciving help
-# The negative 0.453 coef for the sex variable indicates that female students predicted to have a lower grade than male students. 
+# The positive 0.453 coef for the sex variable indicates that female students predicted to have a lower grade than male students. 
 # The train and test R-sq are relative close, so there's no overfitting.
 # If deploying this model I would definitely removed variables like: free time, activities, Medu, Fedu, travel time. Those variables are the ones that have both small coef and low pearson correlation
 # The variables that definitely should be included are failures and school support which have a high impact on the model. Other variables could be included but they probably wouldn't make a big difference because the model itself is bad and would not be usefull to actually predict G3
@@ -99,7 +99,8 @@ plt.axline((5, 5), slope=1)
 plt.title('"Predicted vs Actual (Full Model)')
 plt.xlabel('Predicted')
 plt.ylabel('Actual')
-plt.savefig("outputs/predicted_vs_actual_proj.png")
+# The warm up q5 also required to have the same name. I hope there won't be any confusions 
+plt.savefig("outputs/predicted_vs_actual.png")
 plt.show()
 # Looking at the graph, the points above the line are underpredicted; the ones below are overpredicted. 
 # The model itself has some trouble predicting high and low grades. 
