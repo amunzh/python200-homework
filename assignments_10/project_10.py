@@ -82,7 +82,7 @@ print(f"Uploaded to {processed_path}")
 raw_classified= container.download_blob(processed_path).readall()
 data_back = json.loads(raw_classified.decode("utf-8"))
 df = pd.DataFrame(data_back)
-df["conditions"].value_counts()
+print(df["conditions"].value_counts())
 print(df.head(5))
 
 # Part 5

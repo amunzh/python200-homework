@@ -30,6 +30,7 @@
 # azure_endpoint="https://<resource-name>.openai.azure.com" - This is URL for Azure OpenAI source
 # api_key="<azure-api-key>" - Azure OpenAI key to autificate the request
 # aapi_version="2024-02-01" - The version that OpenAI API should use
+# deployment name(in response) -  Instead of model name uses deployment name held by organization
 
 #Q3
 # Instead, it takes model="my-gpt4o-deployment" - which is the deployment name and is set up by the organization's admin.
