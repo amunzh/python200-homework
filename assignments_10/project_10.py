@@ -14,6 +14,7 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import requests
 import json
+from azure.core.exceptions import ResourceNotFoundError
 
 # Part 1
 ACCOUNT_URL = "https://anastasiiactd2026sa.blob.core.windows.net"
@@ -24,9 +25,13 @@ container = ContainerClient(
     container_name=CONTAINER,
     credential=credential
 )
-blob_path = f"raw/2026-06-02/weather.json"
-raw = container.download_blob(blob_path).readall()
-data = json.loads(raw.decode("utf-8"))
+try:
+    blob_path = f"raw/2026-06-02/weather.json"
+    raw = container.download_blob(blob_path).readall()
+    data = json.loads(raw.decode("utf-8"))
+except ResourceNotFoundError:
+    with open("weather_raw.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
 hourly = data["hourly"]
 records = []
 for i in range(len(hourly["time"])):
