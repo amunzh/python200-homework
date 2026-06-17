@@ -1,0 +1,5 @@
+Video link: https://drive.google.com/file/d/15AoOCcBKJZBo74_y-3GPZw1771Rknuml/view?usp=sharing
+
+1. For me, the pipeline failed to start multiple times; there was a problem with connecting to the prefect server because of incompatibility. After redownloading everything, the prefect server was working well and didn't crash anymore
+2. The UI showed that all the tasks were completed successfully. With the extract stage completed in 2 seconds, transform 15s, and load 1s
+3. I would add logger warnings and errors if the API call or Azure storage fails. It would be easier to track and solve errors. Additionally, adding code so that the program will run automatically every day at a certain time.
