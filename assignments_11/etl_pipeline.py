@@ -1,3 +1,4 @@
+# Video link: https://drive.google.com/file/d/15AoOCcBKJZBo74_y-3GPZw1771Rknuml/view?usp=sharing
 import os
 from dotenv import load_dotenv
 from azure.storage.blob import ContainerClient

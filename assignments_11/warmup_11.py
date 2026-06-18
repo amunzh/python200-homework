@@ -4,12 +4,11 @@
 # No, I would not decorate this function with @task because it is a simple function that requires only completing simple math steps, so using Perfect here is completely unnecessary.
 
 #Q2
-# @task(name = call_api, retries=3, retry_delay_seconds=30)
+# @task(name = "call_api", retries=3, retry_delay_seconds=30)
 
 #Q3
 # I would look at what went wrong in the transform stage because it indicated that it failed, which resulted in the load stage not being able to proceed further. 
-# I would first check if there's a problem with an API key or an OpenAI problem. But there could be other programming bugs.
-
+# I would open the transform stage in Prefect UI, check how many retries there were, and the detailed run to see where exactly the problem was. I would expect that there could be a problem with an API key or an OpenAI problem. But there could be other programming bugs.
 
 # --- Production Patterns ---
 #Q1
